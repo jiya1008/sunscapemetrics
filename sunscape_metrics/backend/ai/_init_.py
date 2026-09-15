@@ -1,0 +1,1 @@
+"""LLM interpretation layer: Google Gemini with a rule-based fallback."""

@@ -1,0 +1,1 @@
+"""Upstream data clients: Open-Meteo (weather) and OpenStreetMap (context)."""

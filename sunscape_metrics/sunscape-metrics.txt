@@ -1,0 +1,53 @@
+sunscape-metrics/
+│
+├── backend/
+│   │
+│   ├── app.py
+│   ├── config.py
+│   ├── requirements.txt
+│   ├── .env.example
+│   │
+│   ├── data/
+│   │   ├── open_meteo.py
+│   │   └── osm.py
+│   │
+│   ├── logic/
+│   │   ├── heat_rules.py
+│   │   └── heat_alert.py
+│   │
+│   ├── ai/
+│   │   └── explain.py
+│   │
+│   └── store/
+│       └── memory_store.py
+│
+├── frontend/
+│   │
+│   ├── index.html
+│   ├── heatwatch.html
+│   ├── heatalert.html
+│   ├── heatmap.html
+│   │
+│   ├── css/
+│   │   └── styles.css
+│   │
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── heatwatch.js
+│   │   ├── heatalert.js
+│   │   └── heatmap.js
+│   │
+│   └── assets/
+│       ├── images/
+│       └── icons/
+│
+├── docs/
+│   ├── Sunscape_Metrics_Report.docx
+│   ├── use-case-diagram.png
+│   └── screenshots/
+│
+├── ppt/
+│   └── Sunscape_Metrics_Presentation.pptx
+│
+├── README.md
+└── .gitignore
