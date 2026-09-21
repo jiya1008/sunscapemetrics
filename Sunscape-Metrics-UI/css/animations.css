@@ -1,0 +1,44 @@
+/* =========================================================================
+   ANIMATIONS
+   Atmosphere motion, weather-icon micro-interactions, sidebar hover
+   (transitions live inline on the rules in main.css), and scroll reveal.
+   ========================================================================= */
+
+/* ---- atmosphere ---------------------------------------------------------*/
+@keyframes driftA{ from{transform:translateX(0);} to{transform:translateX(120vw);} }
+@keyframes driftB{ from{transform:translateX(0);} to{transform:translateX(-110vw);} }
+@keyframes twinkle{ 0%,100%{opacity:.7;} 50%{opacity:1;} }
+@keyframes sunPulse{ 0%,100%{transform:scale(1); filter:brightness(1);} 50%{transform:scale(1.05); filter:brightness(1.12);} }
+@keyframes moonFloat{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+
+/* ---- weather icon (hero) -------------------------------------------------*/
+@keyframes sunSlow{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+@keyframes moonBob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-4px);} }
+@keyframes cloudBob{ 0%,100%{transform:translateX(0);} 50%{transform:translateX(4px);} }
+@keyframes iconPulse{
+  0%{transform:scale(1);}
+  35%{transform:scale(1.14) rotate(6deg);}
+  100%{transform:scale(1);}
+}
+@keyframes auraPulse{
+  0%,100%{opacity:.75; transform:scale(.96);}
+  50%{opacity:1; transform:scale(1.06);}
+}
+
+/* ---- scroll reveal --------------------------------------------------------*/
+[data-reveal]{
+  opacity:0; transform:translateY(20px);
+  transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1);
+}
+[data-reveal].reveal-visible{opacity:1; transform:translateY(0);}
+[data-reveal="stagger"] > *{
+  opacity:0; transform:translateY(16px);
+  transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+}
+[data-reveal="stagger"].reveal-visible > *{opacity:1; transform:translateY(0);}
+[data-reveal="stagger"].reveal-visible > *:nth-child(2){transition-delay:.08s;}
+[data-reveal="stagger"].reveal-visible > *:nth-child(3){transition-delay:.16s;}
+
+@media (prefers-reduced-motion:reduce){
+  [data-reveal],[data-reveal="stagger"] > *{opacity:1 !important; transform:none !important; transition:none !important;}
+}
