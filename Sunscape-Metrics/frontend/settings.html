@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Settings — Sunscape Metrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/settings.css" />
+</head>
+<body data-theme="light">
+<a class="skip" href="#settings-main">Skip to content</a>
+
+<a class="settings-back" href="index.html">← Back to Overview</a>
+
+<div class="settings-shell wrap" id="settings-main">
+  <header class="settings-header">
+    <a class="logo-link" href="index.html" aria-label="Sunscape Metrics, back to home">
+      <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true" style="width:2.6rem;height:2.6rem;">
+        <defs><linearGradient id="sunGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC94A"/><stop offset="1" stop-color="#FF7A3D"/></linearGradient></defs>
+        <circle cx="20" cy="20" r="9" fill="url(#sunGrad2)"/>
+        <g stroke="url(#sunGrad2)" stroke-width="2.4" stroke-linecap="round">
+          <line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/>
+          <line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/>
+        </g>
+      </svg>
+      <span class="logo-word" style="font-size:1.1rem;letter-spacing:.24em;">SUNSCAPE METRICS</span>
+    </a>
+  </header>
+
+  <h1 class="settings-title">Settings</h1>
+
+  <div class="settings-grid">
+    <!-- ACCOUNT -->
+    <section class="glass settings-card">
+      <h2>Account</h2>
+
+      <div id="account-signed-out">
+        <p class="hint">Demo sign-in only — this prototype has no backend yet. Nothing here is sent anywhere; it's stored locally in your browser so the future Flask API can replace it with real authentication.</p>
+        <form id="signin-form">
+          <div class="field">
+            <label for="signin-email">Email</label>
+            <input id="signin-email" type="email" required placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="signin-password">Password</label>
+            <input id="signin-password" type="password" required placeholder="••••••••" autocomplete="new-password" />
+          </div>
+          <div class="field">
+            <label for="signin-area">Preferred area</label>
+            <select id="signin-area">
+              <option value="Mumbai">Mumbai</option>
+              <option value="Navi Mumbai">Navi Mumbai</option>
+              <option value="Thane">Thane</option>
+            </select>
+          </div>
+          <button class="btn-primary" type="submit">Sign In</button>
+        </form>
+      </div>
+
+      <div id="account-signed-in" hidden>
+        <p class="hint">MY DASHBOARD</p>
+        <div class="dash-grid">
+          <div class="dash-row"><span>Name</span><span id="dash-name"></span></div>
+          <div class="dash-row"><span>Email</span><span id="dash-email"></span></div>
+          <div class="dash-row"><span>Preferred area</span><span id="dash-area"></span></div>
+        </div>
+        <p class="hint" style="margin-top:1rem;">Your password is never stored or shown here.</p>
+        <button class="btn-ghost" id="sign-out-btn" type="button">Sign out</button>
+      </div>
+    </section>
+
+    <!-- ACCESSIBILITY -->
+    <section class="glass settings-card">
+      <h2>High Contrast Mode</h2>
+      <p class="hint">Stronger text/background contrast and clearer borders and status indicators, while keeping the Sunscape identity.</p>
+      <div class="toggle-row">
+        <span>Enable high contrast</span>
+        <button class="toggle" id="hc-toggle" type="button" role="switch" aria-pressed="false" aria-label="High contrast mode"></button>
+      </div>
+    </section>
+
+    <!-- SIDEBAR POSITION -->
+    <section class="glass settings-card">
+      <h2>Sidebar Position</h2>
+      <p class="hint">Choose which side the overlay navigation sits on across the site.</p>
+      <div class="segmented" id="sidebar-position-control">
+        <button type="button" data-position="left" class="active">LEFT</button>
+        <button type="button" data-position="right">RIGHT</button>
+      </div>
+    </section>
+
+    <!-- SOUND -->
+    <section class="glass settings-card">
+      <h2>Atmospheric Sound</h2>
+      <p class="hint">Optional, subtle ambient sound tied to current conditions. Off by default; never plays until you turn it on.</p>
+      <button id="sound-toggle" class="btn-ghost" type="button" aria-pressed="false" style="position:static;">🔇 Sound off</button>
+    </section>
+
+    <!-- NOTIFY ME -->
+    <section class="glass settings-card">
+      <h2>Notify Me</h2>
+      <p class="hint">Receive regular updates about the weather and heat conditions in your selected area.</p>
+      <div class="field">
+        <label for="notify-area">Area</label>
+        <select id="notify-area">
+          <option value="mumbai">Mumbai</option>
+          <option value="navi-mumbai">Navi Mumbai</option>
+          <option value="thane">Thane</option>
+        </select>
+      </div>
+      <div class="toggle-row">
+        <span>Notify Me</span>
+        <button class="toggle" id="notify-toggle" type="button" role="switch" aria-pressed="false" aria-label="Notify me about weather updates for the selected area"></button>
+      </div>
+      <p class="hint" id="notify-status" style="margin-top:.8rem;" aria-live="polite">Weather updates are disabled.</p>
+    </section>
+  </div>
+</div>
+
+<script type="module" src="js/settings.js"></script>
+</body>
+</html>
