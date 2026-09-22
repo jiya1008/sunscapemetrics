@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sign In — Sunscape Metrics</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="light">
+
+<div class="login-wrap">
+  <div class="card login-card">
+    <div class="logo" style="text-align:center; margin-bottom:.25rem;">☀ SUNSCAPE <span>METRICS</span></div>
+    <p class="muted" style="text-align:center; margin-top:0;">Sign in to view climate intelligence for MMR</p>
+
+    <form id="login-form">
+      <label class="field">
+        <span>Name</span>
+        <input type="text" id="login-name" required placeholder="Your name" />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" id="login-email" required placeholder="you@example.com" />
+      </label>
+      <label class="field">
+        <span>Preferred area</span>
+        <select id="login-area">
+          <option value="mumbai">Mumbai</option>
+          <option value="navi-mumbai">Navi Mumbai</option>
+          <option value="thane">Thane</option>
+        </select>
+      </label>
+      <button type="submit" id="login-submit">Sign In</button>
+    </form>
+    <p class="muted" style="font-size:.8rem; text-align:center; margin-top:1rem;">
+      Demo sign-in only — no password required, nothing is sent anywhere.
+    </p>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+<script>
+  // Already signed in? Skip straight to the dashboard.
+  if (getUser()) window.location.href = "index.html";
+
+  document.getElementById("login-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("login-name").value.trim();
+    const email = document.getElementById("login-email").value.trim();
+    const preferredArea = document.getElementById("login-area").value;
+    setUser({ name, email, preferredArea });
+    window.location.href = "index.html";
+  });
+</script>
+</body>
+</html>

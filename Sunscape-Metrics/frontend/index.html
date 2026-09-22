@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sunscape Metrics — Climate Intelligence for MMR</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="light">
+
+<header>
+  <div class="bar">
+    <div class="logo">☀ SUNSCAPE <span>METRICS</span></div>
+    <nav>
+      <a href="#heatwatch">HeatWatch</a>
+      <a href="#heatalert">HeatAlert</a>
+      <a href="#heatmap">HeatMap</a>
+      <a href="#methodology">About</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:.75rem;">
+      <div class="user-bar">
+        <span id="user-greeting"></span>
+        <button id="sign-out-btn">Sign out</button>
+      </div>
+      <div style="position:relative;">
+        <button id="settings-btn">⚙ Settings</button>
+        <div id="settings-panel">
+          <label><input type="checkbox" id="dark-toggle"> Dark mode</label>
+          <label><input type="checkbox" id="contrast-toggle"> High contrast</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Know the heat before it affects your day.</h1>
+  <p class="lead">Localized heatwave intelligence and early warnings for Mumbai, Navi Mumbai and Thane — interpreted heat risk, not another weather forecast.</p>
+  <div class="area-picker" id="area-picker"></div>
+</section>
+
+<main class="wrap">
+
+  <section id="heatwatch">
+    <h2>HeatWatch</h2>
+    <p class="muted">Current thermal load, derived from temperature, apparent heat and humidity.</p>
+    <div class="card">
+      <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;">
+        <h3 id="watch-area">Mumbai</h3>
+        <span class="badge" id="watch-status">ELEVATED</span>
+      </div>
+      <div class="metrics">
+        <div class="m"><div class="muted">Temperature</div><div class="v mono" id="watch-temp">34.2°C</div></div>
+        <div class="m"><div class="muted">Apparent</div><div class="v mono" id="watch-apparent">39.1°C</div></div>
+        <div class="m"><div class="muted">Humidity</div><div class="v mono" id="watch-humidity">68%</div></div>
+      </div>
+      <p class="muted" style="margin-bottom:.2rem;">Why is this happening?</p>
+      <p id="watch-reason">—</p>
+      <p class="muted mono" id="watch-updated"></p>
+    </div>
+  </section>
+
+  <section id="comparison">
+    <h2>Area Comparison</h2>
+    <div class="card" style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>Area</th><th>Temperature</th><th>Apparent</th><th>Humidity</th><th>Status</th></tr></thead>
+        <tbody id="compare-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="heatalert">
+    <h2>HeatAlert</h2>
+    <p class="muted">Five-day heat-risk outlook for <span id="alert-area-label">Mumbai</span>.</p>
+    <div class="card"><ol class="timeline" id="alert-timeline"></ol></div>
+    <div class="card">
+      <canvas id="alert-chart" height="120"></canvas>
+      <p class="muted" id="chart-fallback" hidden>Chart unavailable — see the timeline above for the same figures.</p>
+    </div>
+  </section>
+
+  <section id="heatmap">
+    <h2>HeatMap</h2>
+    <p class="muted">Spatial view of current heat stress across Mumbai, Navi Mumbai and Thane.</p>
+    <div class="map-layout">
+      <div id="mmr-map"></div>
+      <div class="card" id="rank-list" style="margin:0;"></div>
+    </div>
+  </section>
+
+  <section id="insight">
+    <div class="card note">
+      <p class="muted mono" id="note-stamp">Analyst note</p>
+      <p id="note-copy"></p>
+      <p class="muted" style="font-size:.8rem;">◆ AI-assisted interpretation, not a chatbot</p>
+    </div>
+  </section>
+
+  <section id="methodology">
+    <h2>Methodology</h2>
+    <div class="card">
+      <div class="flow">Weather data → Processing → Heat-risk engine → Status → Early warning → Comparison</div>
+      <p>This prototype processes weather and forecast values, then assigns NORMAL, ELEVATED or HIGH using project-defined apparent-temperature and humidity thresholds. Status is interpretive, rule-based analysis — not a weather prediction engine.</p>
+      <p class="muted">These are project-defined prototype thresholds, not official government heatwave declarations. Not medical guidance.</p>
+    </div>
+    <div class="card">
+      <h3>Intended data sources</h3>
+      <ul>
+        <li>Open-Meteo for temperature, humidity and forecast fields</li>
+        <li>OpenStreetMap tiles for geographic context</li>
+        <li>Area definitions covering Mumbai, Navi Mumbai and Thane within MMR</li>
+      </ul>
+      <p class="muted">Demo values currently stand in for future <span class="mono">/api/heatwatch</span>, <span class="mono">/api/heatalert</span> and <span class="mono">/api/heatmap</span> responses.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Sunscape Metrics · Climate Intelligence for Mumbai Metropolitan Region<br>
+  SDG 11 – Sustainable Cities and Communities · KJS-CES-01<br>
+  Heat status is derived from project rules applied to weather inputs. Not an official warning system.
+</footer>
+
+<script src="auth.js"></script>
+<script>requireLogin();</script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
