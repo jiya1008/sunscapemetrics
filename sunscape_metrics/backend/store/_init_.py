@@ -1,1 +1,0 @@
-"""Temporary in-package storage. No database is used in the prototype."""

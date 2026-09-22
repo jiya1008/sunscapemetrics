@@ -1,1 +1,0 @@
-"""Heat intelligence: classification rules and the HeatAlert assessment."""
